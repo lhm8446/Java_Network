@@ -1,6 +1,5 @@
 package com.bit2016.network.chat;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -34,28 +33,26 @@ public class ChatClient {
 
 			System.out.print("닉네임>>");
 			String name = scanner.nextLine();
-			pw.println("Join :" + name);
+			pw.println("JOIN:" +name);
+			
+			Thread thread = new ChatClientThread(br);
+			thread.start();
 			
 			while (true) {
-
 				System.out.print(">>");
 				String input = scanner.nextLine();
 
 				if ("quit".equals(input)) {
+					pw.println("QUIT:");
 					break;
 				}
-				pw.println(input);
-
-				String data = br.readLine();
-				if (data == null) {
-					System.out.println("[server] closed by client");
+				if (input == null) {
 					break;
 				}
-				System.out.println(">>" + data);
+				pw.println("MESSAGE:"+input);
 			}
 			scanner.close();
 
-			
 		} catch (SocketException ex) {
 			System.out.println("abnormal closed server");
 		} catch (IOException ex) {

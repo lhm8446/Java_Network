@@ -91,7 +91,7 @@ public class ChatServerThread extends Thread {
 		String message = name + " 님이 퇴장하셨습니다.";
 		broadcastMessage(message);
 		deletePrintWriter(printWriter);
-		printWriter.println("QUIT : OK");
+		printWriter.println("QUIT: OK");
 
 	}
 	private void addPrintWriter(PrintWriter printWriter){
