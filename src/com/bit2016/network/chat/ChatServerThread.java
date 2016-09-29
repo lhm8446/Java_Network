@@ -36,6 +36,7 @@ public class ChatServerThread extends Thread {
 			//3.processing ...
 			while(true){
 				String line = br.readLine();
+				
 				if(line == null){
 					doQuit(pw);
 					break;
@@ -80,7 +81,7 @@ public class ChatServerThread extends Thread {
 		addPrintWriter(printWriter);
 		
 		//4. ack
-		printWriter.println("JOIN : OK");
+		printWriter.println("JOIN:OK");
 	}
 	private void doMessage(String message){
 		String message2 = name +":"+ message;
@@ -91,7 +92,7 @@ public class ChatServerThread extends Thread {
 		String message = name + " 님이 퇴장하셨습니다.";
 		broadcastMessage(message);
 		deletePrintWriter(printWriter);
-		printWriter.println("QUIT: OK");
+		printWriter.println("QUIT:OK");
 
 	}
 	private void addPrintWriter(PrintWriter printWriter){

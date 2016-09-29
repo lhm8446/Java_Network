@@ -15,15 +15,16 @@ public class ChatClientThread extends Thread {
 	public void run() {
 		
 		while(true){
-			
 		try {
 			String data = br.readLine();
+			
 			if(data==null){
 				break;
 			}
+			
 			System.out.println(data);
 			
-		} catch (SocketException e) {
+		}catch (SocketException e) {
 			System.exit(0);
 		}catch (IOException e) {
 			e.printStackTrace();
